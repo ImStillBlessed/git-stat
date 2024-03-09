@@ -23,15 +23,6 @@ export default async function Dashboard({
           {data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url}
         </CardDescription>
       </Card>
-
-
-      <h1>Dashboard</h1>
-      <h2>{data?.name}</h2>
-      <h3>{data?.bio}</h3>
-      <h4>{data?.location}</h4>
-      <h5>{data?.email}</h5>
-      <h6>{data?.twitter_username}</h6>
-      <img src={data?.avatar_url} alt="avatar" />
     </div>
   )
 }
