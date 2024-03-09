@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {};
 
@@ -11,6 +12,7 @@ const Navbar = async (props: Props) => {
                 <Link href={"./"} className="flex items-center gap-2">
                     <p className="rounded-lg border-2 border-b-4 border-r-4 border-black text-xl font-bold text-s-zinc-900 dark:text-s-zinc-100 transition-all hover:-translate-y-[2px] md:block dark:border-white px-3">Git-stat</p>
                 </Link>
+                <ThemeToggle />
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import { search } from "@/components/search";
+import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
 export default async function Dashboard({
   searchParams,
@@ -14,6 +15,16 @@ export default async function Dashboard({
 
   return (
     <div>
+      <Card>
+        <CardHeader>
+          {data.name}
+        </CardHeader>
+        <CardDescription>
+          {data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url}
+        </CardDescription>
+      </Card>
+
+
       <h1>Dashboard</h1>
       <h2>{data?.name}</h2>
       <h3>{data?.bio}</h3>
