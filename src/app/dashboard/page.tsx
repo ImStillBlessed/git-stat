@@ -1,6 +1,6 @@
-import { Searching } from "@/components/search";
+import { search } from "@/components/search";
 
-export default function Dashboard({
+export default async function Dashboard({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -9,8 +9,18 @@ export default function Dashboard({
   let data;
   if (userName) {
     // if username is passed fetch the data from the api using searching function
-    data = Searching(userName);
+    data = await search(userName);
   }
 
-  return <div>{userName ? <>{data}</> : "Unknown User"}</div>;
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <h2>{data?.name}</h2>
+      <h3>{data?.bio}</h3>
+      <h4>{data?.location}</h4>
+      <h5>{data?.email}</h5>
+      <h6>{data?.twitter_username}</h6>
+      <img src={data?.avatar_url} alt="avatar" />
+    </div>
+  )
 }

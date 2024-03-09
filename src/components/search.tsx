@@ -1,8 +1,7 @@
-'use client'
 import { Octokit } from "octokit";
 
 const octokit = new Octokit();
-export const Searching = async (userName: string) => {
+const search = async (userName: string) => {
     if (userName === "") {
         return null;
     }
@@ -11,10 +10,12 @@ export const Searching = async (userName: string) => {
         const response = await octokit.request("GET /users/{username}", {
             username: userName
           });
-        const DATA = response.data;
-        return DATA;
+        const data = response.data;
+        return data;
     } catch (error) {
         console.error(error);
-        return null;
+        return "data not found";
     }
 }
+
+export { search };
