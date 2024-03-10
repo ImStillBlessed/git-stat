@@ -17,10 +17,10 @@ export default async function Dashboard({
     <div>
       <Card>
         <CardHeader>
-          {data.name}
+          {// {data.name}} 
         </CardHeader>
         <CardDescription>
-          {data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url}
+          {//{data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url}}
         </CardDescription>
       </Card>
     </div>
