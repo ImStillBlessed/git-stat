@@ -11,6 +11,7 @@ const search = async (userName: string) => {
             username: userName
           });
         const data = response.data;
+        console.log(data);
         return data;
     } catch (error) {
         console.error(error);

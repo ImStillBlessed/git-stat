@@ -11,16 +11,17 @@ export default async function Dashboard({
   if (userName) {
     // if username is passed fetch the data from the api using searching function
     data = await search(userName);
+    console.log(typeof(data));
   }
 
   return (
     <div>
       <Card>
         <CardHeader>
-          {data.name}
+          {/* {data.name} */}
         </CardHeader>
         <CardDescription>
-          {data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url}
+          {/* {data.bio} {data.location} {data.email} {data.twitter_username} {data.avatar_url} */}
         </CardDescription>
       </Card>
     </div>
