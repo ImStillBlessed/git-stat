@@ -1,8 +1,6 @@
 "use client";
+
 import React, { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,14 +8,27 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Data from "@/components/Data";
+import { SearchAndBtn } from "@/components/SearchAndBtn";
+import { search } from "@/components/search";
+
 
 export default function Home() {
+
   const [inputValue, setInputValue] = useState("");
-  const router = useRouter();
+  let isLoading = false;
+  let data: any;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-  };
+  }; 
+
+  const handleSearch = async () => {
+    isLoading = true;
+    data = await search(inputValue);
+    console.log(data);
+    isLoading = false;
+  }
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -29,26 +40,14 @@ export default function Home() {
           </CardDescription>
         </CardHeader>
         <CardContent className="grid md:flex justify-center align-middle gap-2">
-          <Input
-            className="w-[100%]"
-            type="string"
-            placeholder="Github Username"
-            onChange={handleInputChange}
-          />
-          <Button
-            className="mt-2 md:m-0"
-            onClick={() => {
-              router.push(
-                `/dashboard?${new URLSearchParams({
-                  search: inputValue,
-                }).toString()}`
-              );
-            }}
-          >
-            Search
-          </Button>
+          <SearchAndBtn onClick={handleSearch} onChange={handleInputChange} />
         </CardContent>
       </Card>
+      {data ? (
+        <Data data={data} loading={isLoading} />
+      ) : (
+        <div></div>
+      )}
     </div>
   );
-};
+}

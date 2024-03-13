@@ -6,7 +6,6 @@ const search = async (userName: string) => {
         return null;
     }
     try {
-        console.log(userName);
         const response = await octokit.request("GET /users/{username}", {
             username: userName
           });
