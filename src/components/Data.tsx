@@ -13,13 +13,18 @@ type Props = {
 };
 
 const Data = ({ data, loading }: Props) => {
-  
+
   if(loading) {
     return (
       <div className="flex h-screen w-full items-center justify-center ">
         <p className="animate-bounce">Loading...</p>
       </div>
     );
+  }
+  if(data === null) {
+    return (
+      <div></div>
+    )
   }
 
   return (
@@ -32,7 +37,7 @@ const Data = ({ data, loading }: Props) => {
             width={200}
             height={200}
             className=" h-20 w-20 rounded-full "
-            src={data?.avatar_url ?? ""}
+            src={data?.avatar_url ? data.avatar_url : "https://stock.adobe.com/search/images?k=profile+picture+placeholder"}
             alt="user-img"
           />
 

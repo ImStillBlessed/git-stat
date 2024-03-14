@@ -16,18 +16,19 @@ import { search } from "@/components/search";
 export default function Home() {
 
   const [inputValue, setInputValue] = useState("");
-  let isLoading = false;
-  let data: any;
+  const [data, setData] = useState(null as any);
+  const [loading, setLoading] = useState(false);
+  // let isLoading = false;
+  // let data = {} as any;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-  }; 
+  };
 
   const handleSearch = async () => {
-    isLoading = true;
-    data = await search(inputValue);
-    console.log(data);
-    isLoading = false;
+    setLoading(true);
+    setData(await search(inputValue));
+    setLoading(false);
   }
 
   return (
@@ -43,11 +44,7 @@ export default function Home() {
           <SearchAndBtn onClick={handleSearch} onChange={handleInputChange} />
         </CardContent>
       </Card>
-      {data ? (
-        <Data data={data} loading={isLoading} />
-      ) : (
-        <div></div>
-      )}
+      <Data data={data} loading={loading} />
     </div>
   );
 }
