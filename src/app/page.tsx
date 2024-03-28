@@ -12,14 +12,10 @@ import Data from "@/components/Data";
 import { SearchAndBtn } from "@/components/SearchAndBtn";
 import { search } from "@/components/search";
 
-
 export default function Home() {
-
   const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState(null as any);
   const [loading, setLoading] = useState(false);
-  // let isLoading = false;
-  // let data = {} as any;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -29,7 +25,7 @@ export default function Home() {
     setLoading(true);
     setData(await search(inputValue));
     setLoading(false);
-  }
+  };
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
