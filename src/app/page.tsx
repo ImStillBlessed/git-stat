@@ -8,9 +8,10 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="flex justify-between align-middle">
       <Card className="max-w-3/4 md:max-w-[500px]">
@@ -24,7 +25,12 @@ export default function Home() {
             using the username
           </CardDescription>
           we utilise the github api using Octokit to fetch the userdata
-          <Button className="w-4 h-4" onClick={redirect("/dashboard")}>
+          <Button
+            className="w-4 h-4"
+            onClick={() => {
+              router.push("/dashboard");
+            }}
+          >
             Get started
           </Button>
         </CardContent>
