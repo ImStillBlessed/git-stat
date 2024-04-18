@@ -13,23 +13,20 @@ type Props = {
 };
 
 const Data = ({ data, loading }: Props) => {
-
-  if(loading) {
+  if (loading) {
     return (
       <div className="flex h-screen w-full items-center justify-center ">
         <p className="animate-bounce">Loading...</p>
       </div>
     );
   }
-  if(data === null) {
-    return (
-      <div></div>
-    )
+  if (data === null) {
+    return <div></div>;
   }
 
   return (
     <div className="flex mt-4">
-        <main className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 px-4 py-8  min-h-[200px]">
+      <main className="flex w-full flex-col gap-5 rounded-lg bg-white dark:bg-slate-800 px-4 py-8  min-h-[200px]">
         {/* 1 */}
         <section className="flex gap-4">
           {/* user image  */}
@@ -37,7 +34,7 @@ const Data = ({ data, loading }: Props) => {
             width={200}
             height={200}
             className=" h-20 w-20 rounded-full "
-            src={data?.avatar_url ? data.avatar_url : "https://stock.adobe.com/search/images?k=profile+picture+placeholder"}
+            src={data?.avatar_url}
             alt="user-img"
           />
 

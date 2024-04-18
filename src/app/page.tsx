@@ -1,6 +1,4 @@
 "use client";
-
-import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,39 +6,29 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Data from "@/components/Data";
-import { SearchAndBtn } from "@/components/SearchAndBtn";
-import { search } from "@/components/search";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState("");
-  const [data, setData] = useState(null as any);
-  const [loading, setLoading] = useState(false);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSearch = async () => {
-    setLoading(true);
-    setData(await search(inputValue));
-    setLoading(false);
-  };
-
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="flex justify-between align-middle">
       <Card className="max-w-3/4 md:max-w-[500px]">
         <CardHeader>
           <CardTitle>Welcome to Git stat</CardTitle>
-          <CardDescription>
-            Enter your Github username to get started
-          </CardDescription>
+          <CardDescription>Get git info</CardDescription>
         </CardHeader>
         <CardContent className="grid md:flex justify-center align-middle gap-2">
-          <SearchAndBtn onClick={handleSearch} onChange={handleInputChange} />
+          <CardDescription>
+            This website displays a card of github user account information
+            using the username
+          </CardDescription>
+          we utilise the github api using Octokit to fetch the userdata
+          <Button className="w-4 h-4" onClick={redirect("/dashboard")}>
+            Get started
+          </Button>
         </CardContent>
       </Card>
-      <Data data={data} loading={loading} />
     </div>
   );
 }
